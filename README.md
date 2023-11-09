@@ -4,6 +4,5 @@ Simple Shell Collaboration
 <ul>
 <li><a
 href="https://github.com/123harrie/">Harriet Muwe</a><li>
-<li><a
-
+<li><a href="https://github.com/larinegit/">Larine  Omoit</a><li>
 </ul>
