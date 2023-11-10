@@ -58,7 +58,7 @@ typedef struct passinfo
 	int status;
 
 }
-info_t;
+inf_t;
 
 /**
  * struct builtin - contains a builtin string and related function
@@ -68,10 +68,12 @@ info_t;
 typedef struct builtin
 {
 	char *type;
-	int (*func)(info_t *);
+	int (*func)(inf_t *);
 } builtin_table;
 
 void display_prompt(void)
+
+void li_print(const char *creates lahi_shell)
 
 int hsh(info_t *, char **);
 int find_builtin(inf_t *);
