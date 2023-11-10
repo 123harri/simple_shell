@@ -23,8 +23,7 @@ typedef struct liststr
 } list_t;
 
 /**
- * struct passinfo - contains pseudo-arguements to pass into a function,
- * allowing uniform prototype for function pointer struct
+ * structure - contains pseudo-arguements to pass into a function
  * @ments: a string generated from getline containing arguements
  * @strarr:an array of strings generated from arg
  * @strpa: a string path for the command
@@ -72,22 +71,23 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
+void display_prompt(void)
 
 int hsh(info_t *, char **);
-int find_builtin(info_t *);
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
+int find_builtin(inf_t *);
+void find_cmd(inf_t *);
+void fork_cmd(inf_t *);
 
-int is_cmd(info_t *, char *);
+int is_cmd(inf_t *, char *);
 char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *, char *);
+char *find_path(inf_t *, char *, char *);
 
 int loophsh(char **);
 
 void _eputs(char *);
 int _eputchar(char);
-int _putfd(char c, int la);
-int _putsfd(char *str, int la);
+int _putla(char c, int la);
+int _putsla(char *str, int la);
 
 int _strlen(char *);
 int _strcmp(char *, char *);
@@ -109,26 +109,26 @@ char **strtwo(char *, char);
 char *_memset(char *, char, unsigned int);
 void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
-char *_getenv(info_t *, const char *);
-int _myenv(info_t *);
-int _mysetenv(info_t *);
-int _myunsetenv(info_t *);
-int populate_env_list(info_t *);
+char *_getenv(inf_t *, const char *);
+int _myenv(inf_t *);
+int _mysetenv(inf_t *);
+int _myunsetenv(inf_t *);
+int add_environ_list(inf_t *);
 
-char **get_environ(info_t *);
-int _unsetenv(info_t *, char *);
-int _setenv(info_t *, char *, char *);
+char **get_environ(inf_t *);
+int _unsetenv(inf_t *, char *);
+int _setenv(inf_t *, char *, char *);
 
-char *get_history_file(info_t *info);
-int write_history(info_t *info);
-int read_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int linecount);
-int renumber_history(info_t *info);
+char *get_hist_file(inf_t *inf);
+int write_hist(inf_t *inf);
+int read_hist(inf_t *inf);
+int build_hist_list(inf_t *inf, char *buf, int linecount);
+int number_hist(inf_t *inf);
 
 list_t *add_node(list_t **, const char *, int);
 list_t *add_node_end(list_t **, const char *, int);
 size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
+int delete_node(list_t **, unsigned int);
 void free_list(list_t **);
 
 #endif
