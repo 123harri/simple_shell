@@ -24,21 +24,22 @@ typedef struct liststr
 } list_t;
 
 /**
- * structure - contains pseudo-arguements to pass into a function
- * @ments: a string generated from getline containing arguements
- * @strarr:an array of strings generated from arg
- * @strpa: a string path for the command
- * @argcount: the argument count
- * @err_count: error count
- * @err_num: error code for exit()s
- * @linecount_flag: if on count this line of input
- * @fname: the program filename
- * @env: linked list local copy of environ
- * @environ: custom modified copy of environ from LL env
- * @hist: the history node
- * @alias: the alias node
- * @env_changed: on if environ was changed
- *
+ * struct passinfo - Structure to hold information for function parameters
+ * @arg: Command argument
+ * @strarr: Array of strings generated from arg
+ * @strpa: String path for the command
+ * @argcount: Argument count
+ * @line_count: Line count
+ * @err_num: Error code for exit()
+ * @linecount_flag: If set, count this line of input
+ * @fname: Program filename
+ * @env: Linked list local copy of environ
+ * @hist: History node
+ * @alias: Alias node
+ * @environ: Custom modified copy of environ from linked list env
+ * @env_changed: Set if environ was changed
+ * @status: Process status
+ * @readla: Readla value
  */
 
 typedef struct passinfo
