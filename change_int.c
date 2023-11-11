@@ -4,7 +4,7 @@
  * interactive - returns true if shell is interactive mode
  * @inf: struct address
  *
- * Return: 1 if interactive mode, 0 otherwise
+ * Return: 1 if interactive
  */
 int interactive(inf_t *inf)
 {
