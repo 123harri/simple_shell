@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 
 extern char **environ;
 
@@ -56,9 +57,9 @@ typedef struct passinfo
 	char **environ;
 	int env_changed;
 	int status;
+	int readla;
 
-}
-inf_t;
+} inf_t;
 
 /**
  * struct builtin - contains a builtin string and related function
@@ -71,11 +72,11 @@ typedef struct builtin
 	int (*func)(inf_t *);
 } builtin_table;
 
-void display_prompt(void)
+void display_prompt(void);
 
-void li_print(const char *creates lahi_shell)
+void li_print(const char *lahi_shell);
 
-int hsh(info_t *, char **);
+int hsh(inf_t *, char **);
 int find_builtin(inf_t *);
 void find_cmd(inf_t *);
 void fork_cmd(inf_t *);
