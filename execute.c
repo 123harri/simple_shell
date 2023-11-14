@@ -6,9 +6,8 @@
  * @command: The command to be executed
  * This function creates a child process using fork(), and the child process
  * executes the specified command using execlp(). The parent process waits
- * for the child to complete
+ * for the child to complete.
  */
-
 void execute_command(const char *command)
 {
 	pid_t child_pid = fork();
@@ -36,8 +35,8 @@ void execute_command(const char *command)
 		li_print("Error executing command.\n");
 		exit(EXIT_FAILURE);
 	}
-		else
-		{
-			wait(NULL);
-		}
+	else
+	{
+		wait(NULL);
+	}
 }

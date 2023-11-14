@@ -9,6 +9,7 @@
 
 extern char **environ;
 
+#define MAX_INPUT_SIZE 1024
 
 /**
  * struct liststr - singly linked list
@@ -74,13 +75,14 @@ typedef struct builtin
 } builtin_table;
 
 void display_prompt(void);
-
+void execute_command(const char *command);
+int interactive(inf_t *inf);
 void li_print(const char *lahi_shell);
 
 int hsh(inf_t *, char **);
 int find_builtin(inf_t *);
 void find_cmd(inf_t *);
-void fork_cmd(inf_t *);
+void fork_cmd(inf_t *inf);
 
 int is_cmd(inf_t *, char *);
 char *dup_chars(char *, int, int);
@@ -107,7 +109,7 @@ char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
-char **strnizer(char *, char *);
+char **strnizer(char *str, const char *delimiter);
 char **strtwo(char *, char);
 
 char *_memset(char *, char, unsigned int);
