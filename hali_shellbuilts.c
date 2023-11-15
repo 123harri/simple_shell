@@ -12,7 +12,7 @@ int _myexit(inf_t *inf)
 
 	if (inf->arg[1])
 	{
-		exitcheck = _erratoi(inf->arg[1]);
+		exitcheck = atoi(&(inf->arg[1]));
 		if (exitcheck == -1)
 		{
 			inf->status = 2;
@@ -21,7 +21,7 @@ int _myexit(inf_t *inf)
 			_eputchar('\n');
 			return (1);
 		}
-		inf->err_num = _erratoi(inf->arg[1]);
+		inf->err_num = atoi(&(inf->arg[1]));
 		return (-2);
 	}
 	inf->err_num = -1;
