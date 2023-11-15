@@ -5,11 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-<<<<<<< HEAD
 #include <errno.h>
-=======
 #include <sys/wait.h>
->>>>>>> 33f26f0cd371c914ae0c144ddd6aeb1ee7e06801
 
 extern char **environ;
 
