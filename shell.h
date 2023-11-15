@@ -83,7 +83,10 @@ int hsh(inf_t *, char **);
 int find_builtin(inf_t *);
 void find_cmd(inf_t *);
 void fork_cmd(inf_t *inf);
-
+int _mycd(inf_t *inf);
+int _myhelp(inf_t *inf);
+int _myexit(inf_t *inf);
+void print_error(inf_t *info, const char *message);
 int is_cmd(inf_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(inf_t *, char *, char *);
