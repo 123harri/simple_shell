@@ -80,6 +80,8 @@ void execute_command(const char *command);
 int interactive(inf_t *inf);
 void li_print(const char *lahi_shell);
 
+int _myexit(inf_t *inf);
+
 int hsh(inf_t *, char **);
 int find_builtin(inf_t *);
 void find_cmd(inf_t *);
