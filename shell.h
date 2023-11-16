@@ -100,22 +100,32 @@ void display_prompt(void);
 void execute_command(const char *command);
 int interactive(inf_t *inf);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ee8f51096d60e29577e6244b01ed96b330e10cf1
 void li_print(const char *hali_shell)k;
 int hsh(inf_t *, char **);
 int find_builtin(inf_t *);
 void find_cmd(inf_t *);
 void fork_cmd(inf_t *inf);
+<<<<<<< HEAD
 =======
 void li_print(const char *lahi_shell);
 int _isalpha(int c);
 int _atoi(char *s);
 >>>>>>> 82ec451c3e4f108508acd226de7ade4a32f9342e
+=======
+void li_print(const char *hali_shell);
+int _isalpha(int c);
+int _atoi(char *s);
+
+>>>>>>> ee8f51096d60e29577e6244b01ed96b330e10cf1
 
 int _mycd(char *args[]);
 int _myexit(char *args[]);
 int _myhelp(char *args[]);
 
-void print_error(inf_t *info, const char *message);
+void print_error(inf_t *inf, const char *message);
 int is_cmd(inf_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(inf_t *, char *, char *);
