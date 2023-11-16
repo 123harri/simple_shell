@@ -12,7 +12,7 @@ int _mycd(inf_t *inf)
 	s = getcwd(buffer, 1024);
 	if (!s)
 		_puts("hali_shell exits \n");
-	if (!inf->argv[1])
+	if (!inf->strarr[1])
 	{
 		dir = _getenv(inf, "HOME=");
 		if (!dir)
@@ -20,7 +20,7 @@ int _mycd(inf_t *inf)
 		else
 			chdir_ret = chdir(dir);
 	}
-	else if (_strcmp(inf->argv[1], "-") == 0)
+	else if (_strcmp(inf->strarr[1], "-") == 0)
 	{
 		if (!_getenv(inf, "OLDPWD="))
 		{
@@ -29,14 +29,14 @@ int _mycd(inf_t *inf)
 			return (1);
 		}
 		_puts(_getenv(inf, "OLDPWD=")), _putchar('\n');
-		chdir_ret = chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
+		chdir_ret = chdir((dir = _getenv(inf, "OLDPWD=")) ? dir : "/");
 	}
 	else
-		chdir_ret = chdir(info->argv[1]);
+		chdir_ret = chdir(inf->strarr[1]);
 	if (chdir_ret == -1)
 	{
-		print_error(info, "can't cd to ");
-		_eputs(info->argv[1]), _eputchar('\n');
+		print_error(inf, "can't cd to ");
+		_eputs(inf->strarr[1]), _eputchar('\n');
 	}
 	else
 	{
@@ -48,14 +48,14 @@ int _mycd(inf_t *inf)
 
 /**
  * _myhelp - changes the current directory of the process
- * @info: Structure containing potential arguments.
+ * @inf: Structure containing potential arguments.
  * Return: Always 0
  */
 int _myhelp(inf_t *inf)
 {
 	char **arg_array;
 
-	arg_array = info->argv;
+	arg_array = inf->strarr;
 	_puts("hoping my hali_shell to run \n");
 	if (0)
 		_puts(*arg_array);

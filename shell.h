@@ -99,7 +99,7 @@ typedef struct builtin
 void display_prompt(void);
 void execute_command(const char *command);
 int interactive(inf_t *inf);
-void li_print(const char *lahi_shell)k;
+void li_print(const char *hali_shell)k;
 int hsh(inf_t *, char **);
 int find_builtin(inf_t *);
 void find_cmd(inf_t *);
@@ -120,7 +120,7 @@ int _strlen(char *);
 int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
-
+uj
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
