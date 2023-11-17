@@ -47,7 +47,7 @@ char **list_to_strings(list_t *head)
 			return (NULL);
 		}
 
-		str = _strcpy(str, node->str);
+		str = hali_strcpy(str, node->str);
 		strs[i] = str;
 	}
 	strs[i] = NULL;
@@ -67,7 +67,7 @@ size_t print_list(const list_t *h)
 
 	while (h)
 	{
-		_puts(convert_number(h->num, 10, 0));
+		_puts(convert_num(h->num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
 		_puts(h->str ? h->str : "(nil)");

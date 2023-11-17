@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * _strcpy - copies a string
+ *strcpy - copies a string
  * @dest: the destination
  * @src: the source
  *
  * Return: pointer to destination
  */
-char *_strcpy(char *dest, char *src)
+char *hali_strcpy(char *dest, char *src)
 {
 	int i = 0;
 
@@ -23,26 +23,26 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- * _strdup - duplicates a string
+ *strdup - duplicates a string
  * @str: the string to duplicate
  *
  * Return: pointer to the duplicated string
  */
-char *_strdup(const char *str)
+char *hali_strdup(const char *str)
 {
 	int length = 0;
-	char *ret;
+	char *r;
 
 	if (str == NULL)
 		return (NULL);
 	while (*str++)
 		length++;
-	ret = malloc(sizeof(char) * (length + 1));
-	if (!ret)
+	r = malloc(sizeof(char) * (length + 1));
+	if (!r)
 		return (NULL);
-	for (length++; length--;)
-		ret[length] = *--str;
-	return (ret);
+	for (; length++; length--)
+		r[length] = *--str;
+	return (r);
 }
 
 /**

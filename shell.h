@@ -8,7 +8,9 @@
 #include <errno.h>
 #include <sys/wait.h>
 #include <fcntl.h>
-
+#include <sys/stat.h>
+#include <limits.h>
+#include <sys/types.h>
 
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
@@ -64,7 +66,8 @@ typedef struct liststr
  * @environ: Custom modified copy of environ from linked list env
  * @env_changed: Set if environ was changed
  * @status: Process status
- * @readla: Readla value
+ * @readfd: Readfd value
+ * @argv: arguments vector
  */
 
 typedef struct passinfo
@@ -83,7 +86,8 @@ typedef struct passinfo
 	char **environ;
 	int env_changed;
 	int status;
-	int readla;
+	int readfd;
+	char *argv;
 
 } inf_t;
 
@@ -92,6 +96,7 @@ typedef struct passinfo
  * @type: the builtin command flag
  * @func: the function
  */
+
 typedef struct builtin
 {
 	char *type;
@@ -101,31 +106,22 @@ typedef struct builtin
 void display_prompt(void);
 void execute_command(const char *command);
 int interactive(inf_t *inf);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ee8f51096d60e29577e6244b01ed96b330e10cf1
-void li_print(const char *hali_shell)k;
-int hsh(inf_t *, char **);
-int find_builtin(inf_t *);
-void find_cmd(inf_t *);
-void fork_cmd(inf_t *inf);
-<<<<<<< HEAD
-=======
-void li_print(const char *lahi_shell);
-int _isalpha(int c);
-int _atoi(char *s);
->>>>>>> 82ec451c3e4f108508acd226de7ade4a32f9342e
-=======
 void li_print(const char *hali_shell);
 int _isalpha(int c);
 int _atoi(char *s);
+int is_delim(char c, char *delim);
 
->>>>>>> ee8f51096d60e29577e6244b01ed96b330e10cf1
+int _mycd(inf_t *inf);
+int _myexit(inf_t *inf);
+int _myhelp(inf_t *inf);
 
-int _mycd(char *args[]);
-int _myexit(char *args[]);
-int _myhelp(char *args[]);
+int hsh(inf_t *inf, char **args);
+int find_builtin(inf_t *inf);
+void find_cmd(inf_t *inf);
+void fork_cmd(inf_t *inf);
+
+int _myhist(inf_t *inf);
+int _myalias(inf_t *inf);
 
 void print_error(inf_t *inf, const char *message);
 int is_cmd(inf_t *, char *);
@@ -139,15 +135,16 @@ int _eputchar(char);
 int _putla(char c, int la);
 int _putsla(char *str, int la);
 
-int _strlen(char *);
+char *convert_num(long int, int, int);
+
+int _strlen(char *str);
 int _strcmp(const char *str1, const char *str2);
-char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
-uj
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
-void _puts(char *);
-int _putchar(char);
+char *starts_with(const char *haystack, const char *needle);
+char *hali_strcat(char *dest, char *src);
+char *hali_strcpy(char *dest, char *src);
+char *hali_strdup(const char *str);
+void _puts(char *str);
+int _putchar(char c);
 
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
@@ -159,15 +156,15 @@ char **strtwo(char *, char);
 char *_memset(char *, char, unsigned int);
 void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
-char *_getenv(inf_t *, const char *);
-int _myenv(inf_t *);
-int _mysetenv(inf_t *);
-int _myunsetenv(inf_t *);
-int add_environ_list(inf_t *);
+char *get_env(inf_t *inf, const char *n);
+int my_env(inf_t *inf);
+int my_setenv(inf_t *inf);
+int my_unsetenv(inf_t *inf);
+int add_environ_list(inf_t *inf);
 
-char **get_environ(inf_t *);
-int _unsetenv(inf_t *, char *);
-int _setenv(inf_t *, char *, char *);
+char **get_environ(inf_t *inf);
+int _setenv(inf_t *inf, char *v, char *value);
+int _unsetenv(inf_t *inf, char *v);
 
 char *get_hist_file(inf_t *inf);
 int write_hist(inf_t *inf);
@@ -175,10 +172,19 @@ int read_hist(inf_t *inf);
 int build_hist_list(inf_t *inf, char *buf, int linecount);
 int number_hist(inf_t *inf);
 
+ssize_t get_input(inf_t *);
+
+void clear_inf(inf_t *);
+void set_inf(inf_t *, char *args[]);
+void free_inf(inf_t *, int);
+
+size_t list_len(const list_t *h);
+char **list_to_strings(list_t *head);
+size_t print_list(const list_t *h);
+list_t *node_starts_with(list_t *node, char *prefix, char c);
+ssize_t get_node_index(list_t *head, list_t *node);
+size_t print_list_str(const list_t *);
 list_t *add_node(list_t **, const char *, int);
 list_t *add_node_end(list_t **, const char *, int);
-size_t print_list_str(const list_t *);
-int delete_node(list_t **, unsigned int);
-void free_list(list_t **);
-
+int delete_node_at_index(list_t **, unsigned int);
 #endif

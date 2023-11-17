@@ -8,8 +8,7 @@
  */
 int interactive(inf_t *inf)
 {
-	inf->readla = 0;
-	return (isatty(STDIN_FILENO) && inf->readla <= 2);
+	return (isatty(STDIN_FILENO) && inf->readfd <= 2);
 }
 
 /**
