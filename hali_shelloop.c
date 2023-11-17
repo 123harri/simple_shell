@@ -48,9 +48,9 @@ int hsh(inf_t *inf, char **args)
  * @inf: the parameter & return inf struct
  *
  * Return: -1 if builtin not found,
- * 	0 if builtin executed successfully,
- * 	1 if builtin found but not successful,
- * 	2 if builtin signals exit()
+ * 0 if builtin executed successfully,
+ * 1 if builtin found but not successful,
+ * 2 if builtin signals exit()
  */
 int find_builtin(inf_t *inf)
 {
@@ -122,7 +122,7 @@ void find_cmd(inf_t *inf)
 
 /**
  * fork_cmd - forks a an exec thread to run cmd
- * @info: the parameter & return info struct
+ * @inf: the parameter & return inf struct
  *
  * Return: void
  */

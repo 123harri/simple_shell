@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- *strcpy - copies a string
+ * hali_strcpy - copies a string
  * @dest: the destination
  * @src: the source
  *
@@ -23,7 +23,7 @@ char *hali_strcpy(char *dest, char *src)
 }
 
 /**
- *strdup - duplicates a string
+ * hali_strdup - duplicates a string
  * @str: the string to duplicate
  *
  * Return: pointer to the duplicated string
